@@ -1,0 +1,47 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "Masaüstü Görev Yöneticisi",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "copy-web": "node -e \"const fs=require('fs');['index.html','styles.css','renderer.js'].forEach(f=>fs.copyFileSync(f,'www/'+f))\"",
+    "sync": "npm run copy-web && npx cap sync android",
+    "android": "npm run sync && npx cap open android",
+    "build": "electron-builder --win --x64 --dir"
+  },
+  "build": {
+    "appId": "com.taskmanager.app",
+    "productName": "Task Manager",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "styles.css",
+      "renderer.js"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Task Manager"
+    }
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^26.8.1"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.3.0",
+    "@capacitor/cli": "^8.3.0",
+    "@capacitor/core": "^8.3.0",
+    "@capacitor/preferences": "^8.0.1"
+  }
+}

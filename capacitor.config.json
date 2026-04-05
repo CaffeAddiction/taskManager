@@ -1,0 +1,14 @@
+{
+  "appId": "com.taskmanager.app",
+  "appName": "Task Manager",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "StatusBar": {
+      "backgroundColor": "#0f0f1a",
+      "style": "DARK"
+    }
+  }
+}
